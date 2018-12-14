@@ -1,0 +1,432 @@
+/* Start Loader */
+.animationload {
+    background-color: #fff;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10000;
+}
+
+.osahanloading {
+    animation: 1.5s linear 0s normal none infinite running osahanloading;
+    background: #fed37f none repeat scroll 0 0;
+    border-radius: 50px;
+    height: 50px;
+    left: 50%;
+    margin-left: -25px;
+    margin-top: -25px;
+    position: absolute;
+    top: 50%;
+    width: 50px;
+}
+
+.osahanloading::after {
+    animation: 1.5s linear 0s normal none infinite running osahanloading_after;
+    border-color: #85d6de transparent;
+    border-radius: 80px;
+    border-style: solid;
+    border-width: 10px;
+    content: "";
+    height: 80px;
+    left: -15px;
+    position: absolute;
+    top: -15px;
+    width: 80px;
+}
+
+@keyframes osahanloading {
+    0% {
+        transform: rotate(0deg);
+    }
+    
+    50% {
+        background: #85d6de none repeat scroll 0 0;
+        transform: rotate(180deg);
+    }
+    
+    100% {
+        transform: rotate(360deg);
+    }
+}
+/* End Loader */
+
+/* Start Vue JS Component */
+[v-cloak] {
+    display: none;
+}
+
+/* Fade Transition */
+.fade-enter-active,
+.fade-leave-active,
+.fade-move {
+    transition: 0.3s;
+}
+
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
+}
+
+/* Slide Transition */
+.slide-enter-active,
+.slide-leave-active,
+.slide-move {
+    transition: 0.3s;
+}
+
+.slide-enter,
+.slide-leave-to {
+    opacity: 0;
+    transform: translate(-50%, 0);
+}
+
+/* Scale Transition */
+.scale-enter-active,
+.scale-leave-active,
+.scale-move {
+    transition: 0.3s;
+}
+
+.scale-enter,
+.scale-leave-to {
+    opacity: 0;
+    transform: scale(0.25);
+}
+
+/* Rotate Transition */
+.rotate-enter-active,
+.rotate-leave-active,
+.rotate-move {
+    transition: 0.3s;
+}
+
+.rotate-enter,
+.rotate-leave-to {
+    opacity: 0;
+    transform: scale(0.25) rotate(2turn);
+}
+/* End Vue JS Component */
+
+/* Start Index */
+#chart-result-box {
+    margin-top: 80px;
+    height: 100%;
+    padding-left: 15px;
+}
+
+#chart-box {
+    margin: 0 auto;
+    height: 875px;
+    width: 100%;
+    margin-left: 35%;
+    margin-top: 10%;
+}
+/* End Index */
+
+/* Start General */
+.uppercase {
+    text-transform: uppercase;
+}
+
+body {
+    background: linear-gradient(to right, #5433FF, #20BDFF, #A5FECB);
+    overflow-x: hidden;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+    -webkit-appearance: textfield
+}
+/* End General */
+
+/* Start Admin Profile */
+.emp-profile{
+    padding: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 0.5rem;
+    background: #fff;
+    margin-top: 200px;
+    margin-bottom: 200px;
+}
+
+.information-tab {
+    padding-top: 50px;
+}
+
+.profile-img{
+    text-align: center;
+}
+
+.profile-img img{
+    width: 70%;
+    height: 100%;
+}
+
+.profile-head {
+    margin-top: 25px;
+}
+
+.profile-head h5{
+    color: #333;
+}
+
+.profile-head h6{
+    color: #0062cc;
+}
+
+.profile-edit-btn{
+    border: none;
+    border-radius: 1.5rem;
+    width: 70%;
+    padding: 2%;
+    font-weight: 600;
+    color: #6c757d;
+    cursor: pointer;
+}
+
+.proile-rating{
+    font-size: 12px;
+    color: #818182;
+    margin-top: 5%;
+}
+
+.proile-rating span{
+    color: #495057;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.profile-head .nav-tabs{
+    margin-bottom:5%;
+}
+
+.profile-head .nav-tabs .nav-link{
+    font-weight:600;
+    border: none;
+}
+
+.profile-head .nav-tabs .nav-link.active{
+    border: none;
+    border-bottom:2px solid #0062cc;
+}
+
+.profile-work{
+    padding: 14%;
+    margin-top: -15%;
+}
+
+.profile-work p{
+    font-size: 12px;
+    color: #818182;
+    font-weight: 600;
+    margin-top: 10%;
+}
+
+.profile-work a{
+    text-decoration: none;
+    color: #495057;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.profile-work ul{
+    list-style: none;
+}
+
+.profile-tab label{
+    font-weight: 600;
+}
+
+.profile-tab p{
+    font-weight: 600;
+    color: #0062cc;
+}
+/* End Admin Profile */
+
+/* Start Change Password */
+#change-password-text-box {
+    margin-bottom: 15px;
+}
+
+#change-password-box {
+    padding: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 0.5rem;
+    background: #fff;
+    margin-top: 250px;
+    margin-bottom: 250px;
+}
+
+#password-box {
+    margin: 0 auto;
+    height: 850px;
+}
+
+#change-password-text {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+#password-text {
+    font-size: 20px;
+}
+/* End Change Passoword*/
+
+/* Start Display Mission */
+#manage-display-box {
+    margin-top: 105px;
+    height: 100%;
+    padding-left: 15px;
+}
+
+#display-box {
+    margin: 0 auto;
+    height: 850px;
+    width: 100%;
+}
+
+#mission-select-button-box, #mission-action-select-button-box {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#mission-select-button, #mission-action-select-button {
+    width: 223.567px;
+}
+
+#event-information-wrapper, #general-information-wrapper {
+    margin-top: 20px;
+}
+
+#event-information-box, #general-information-box {
+    margin-bottom: 20px;
+}
+
+#event-date-information-box {
+    margin-top: 10px;
+}
+
+#event-information-wrapper > .page, #general-information-wrapper > .page  {
+    display: none;
+}
+
+#event-information-wrapper > .page-active-event,  #event-information-wrapper > .page-active-history-event, #event-information-wrapper > .page-active-filter-event, #general-information-wrapper > .page-active-general-daily, #general-information-wrapper >  .page-active-general-random,  #general-information-wrapper > .page-active-filter-general-daily, #general-information-wrapper > .page-active-filter-general-random,  #general-information-wrapper > .page-active-history-general {
+    display: block;
+}
+
+#event-information-pagination {
+    padding-top: 10px;
+}
+
+div[aria-labelledby="filter-tab"] > ul[role="tablist"], div[aria-labelledby="history-tab"] > ul[role="tablist"], div[aria-labelledby="general-tab"] > ul[role="tablist"], div[aria-labelledby="filter-general-tab"] > ul[role="tablist"] {
+    margin-top: 20px;
+}
+
+#filter-info {
+    margin-top: 15px;
+}
+
+#event-selection-button {
+    margin-left: 15px;
+}
+/* End Display Mission */
+
+/* Start Set Mission */
+#set-mission-box {
+    margin-top: 105px;
+    height: 100%;
+    padding-left: 15px;
+}
+
+#map {
+    width: 1574.98px;
+    height: 300px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#map.display {
+    width: 100%;
+    height: 850px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.example-1 {
+    position: relative;
+    overflow-y: scroll;
+    height: 700px; 
+}
+
+#mission-box {
+    margin: 0 auto;
+    height: 850px;
+}
+
+#add-mission-box {
+    margin-bottom: 20px;
+}
+
+#mission-step {
+    width: 100%;
+    margin-bottom: 20px;
+    width: 1574.98px;
+}
+
+.stepwizard-step p {
+    margin-top: 10px;
+}
+
+.stepwizard-row {
+    display: table-row;
+}
+
+.stepwizard {
+    display: table;
+    width: 50%;
+    position: relative;
+}
+
+.stepwizard-row:before {
+    top: 14px;
+    bottom: 0;
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, #5433FF, #20BDFF, #A5FECB);
+    z-index: 0;
+}
+
+.stepwizard-step {
+    display: table-cell;
+    text-align: center;
+    position: relative;
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.428571429;
+    border-radius: 15px;
+}
+
+#event-tablePreview, #select-input, #event-name-input {
+    min-width: 1574.98px;
+}
+
+#general-mission-input {
+    margin-top: 45px;
+}
+
+#general-mission-save-button {
+    margin-top: 20px;
+}
+/* End Set Mission */
