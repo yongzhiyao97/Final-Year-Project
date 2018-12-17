@@ -385,6 +385,8 @@
                                             <img :src="(facebook_user.photoURL + '?type=large')" class="img-fluid" />
                                             
                                             <h3>{{ facebook_user.displayName }}</h3>
+
+                                            <h4 v-show="student_point != null">Score: {{ student_point }}</h4>
                                             
                                             <div id="qrcode"></div>
 	                                        
@@ -494,9 +496,10 @@
                     
                     facebook_user: JSON.parse(<?= json_encode($_user); ?>),
 
+                    student_point: null,
+
                     student_facebook_friend_request_information: {},
                     student_friend: {},
-                    student_friend_list: [],
 
                     get_location_button_visibility: false,
 
@@ -519,6 +522,9 @@
                                 this.student_facebook_friend_request_information = request['Friend'] || {};
 
                                 this.student_friend = snap.val()['Friend'] || {};
+
+                                let score = snap.val()['Score'] || {};
+                                this.student_point = snap.val()['Score'].Point || null;
                             }
                         });
 
@@ -597,20 +603,21 @@
                             Add_Friend_DateTime: `${date}/${month}/${year} ${hour}:${minute}:${second}`
                         });
 
+                        vm.$delete(this.student_facebook_friend_request_information, object_key);
                         db.ref.child(this.facebook_user.uid).child("Request").child("Friend").child(object_key).remove();
 
-                        setTimeout(() => {
-                            location = "Index.php";
-                        }, 1000);
+                        db.ref.on("child_added", snap => {
+                            if(snap.key == this.facebook_user.uid) {
+                                this.student_friend = snap.val()['Friend'] || {};
+                            }
+                        });
                     },
                     removeFriendRequest(object_key) {
+                        vm.$delete(this.student_facebook_friend_request_information, object_key);
                         db.ref.child(this.facebook_user.uid).child("Request").child("Friend").child(object_key).remove();
-
-                        setTimeout(() => {
-                            location = "Index.php";
-                        }, 1000);
                     },
                     removeFriend(facebook_uid, object_key) {
+                        vm.$delete(this.student_friend, object_key);
                         db.ref.child(this.facebook_user.uid).child("Friend").child(object_key).remove();
 
                         let friend_push_id = null;
@@ -635,9 +642,11 @@
                             db.ref.child(facebook_uid).child("Friend").child(a).remove();
                         });
 
-                        setTimeout(() => {
-                            location = "Index.php";
-                        }, 1000);
+                        db.ref.on("child_added", snap => {
+                            if(snap.key == this.facebook_user.uid) {
+                                this.student_friend = snap.val()['Friend'] || {};
+                            }
+                        });
                     },
                     getLocation() {
                         get_location();
@@ -678,6 +687,13 @@
                 created() {
                     this.load();
                     this.location_load();
+                },
+                watch: {
+                    student_friend: {
+                        deep: true,
+                        handler(val, oldVal) {
+                        }
+                    }
                 },
                 updated() {
                     if(!this.qr_code_loaded) {

@@ -8,7 +8,7 @@
 <head>
 
     <!-- TAB LOGO -->
-    <link rel="icon" type="" href="" />
+    <link rel="icon" type="type/png" href="Image/google-map.png" />
 
     <!-- STYLES -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >

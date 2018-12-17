@@ -194,7 +194,7 @@
                 methods: {
                     load() {
                         db.ref.on("child_added", snap => {
-                            if(snap.key == this.friend_id || this.facebook_user.uid != this.friend_id) {
+                            if(snap.key == this.friend_id && this.facebook_user.uid != this.friend_id) {
                                 this.student_facebook_uid = snap.key || null;
                                 this.student_facebook_information = snap.val()['Facebook'] || {};
                                     

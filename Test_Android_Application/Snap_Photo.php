@@ -312,6 +312,14 @@
                 created() {
                     this.load();
                 },
+                watch: {
+                    current_latitude: function(newValue, oldValue) {
+                        return newValue;
+                    },
+                    current_longitude: function(newValue, oldValue) {
+                        return newValue;
+                    }
+                },
                 updated() {
                     if(!this.snap_loaded) {
                         snapPhoto();
