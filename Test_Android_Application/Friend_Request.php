@@ -193,19 +193,23 @@
                 },
                 methods: {
                     load() {
+                        if(this.facebook_user.uid == this.friend_id) {
+                            location = "Index.php";
+                        }
+
                         db.ref.on("child_added", snap => {
-                            if(snap.key == this.friend_id && this.facebook_user.uid != this.friend_id) {
+                            if(snap.key == this.friend_id) {
                                 this.student_facebook_uid = snap.key || null;
                                 this.student_facebook_information = snap.val()['Facebook'] || {};
                                     
                                 let request = snap.val()['Request'] || {};
                                 this.student_facebook_friend_request_information = request['Friend'] || {};
+                            }
 
+                            if(snap.key == this.facebook_user.uid) {
                                 this.student_friend = snap.val()['Friend'] || {};
                             }
-                            else {
-                                location = "Index.php"
-                            }
+
                         });
 
                         setTimeout(() => {
@@ -246,7 +250,10 @@
                 },
                 updated() {
                     friend_request_sent();
-                    friend_list();
+
+                    if(!this.isFriend) {
+                        friend_list();
+                    }
                 }
             });
 
@@ -277,6 +284,7 @@
                 let search = Object.values(vm.student_friend);
 
                 search.forEach(function (a) {
+                    console.log(a.Facebook_UID);
                     if(a.Facebook_UID == vm.friend_id) {
                         vm.isFriend = true;
                     }

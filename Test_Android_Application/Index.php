@@ -46,7 +46,7 @@
                         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
 
                             <li class="nav-item">
-                                <a class="nav-link active" id="pills-general-tab" data-toggle="pill" href="#pills-general" role="tab" aria-controls="pills-general" aria-selected="true">General <span class="badge badge-info">{{ ((Object.values(all_general_mission).filter(v => v.DateTimeMode.toUpperCase() == "DAILY").length)+(Object.values(all_general_mission).filter(v => v.DateTimeMode.toUpperCase() == "RANDOM" && compareDate(v.RandomDateTime) == true).length)) }}</span></a>
+                                <a class="nav-link active" id="pills-general-tab" data-toggle="pill" href="#pills-general" role="tab" aria-controls="pills-general" aria-selected="true">General <span class="badge badge-info">{{ ((Object.values(all_general_mission).filter(v => v.DateTimeMode.toUpperCase() == "DAILY").length)+(Object.values(all_general_mission).filter(v => v.DateTimeMode.toUpperCase() == "RANDOM" && equalDate(v.RandomDateTime) == true).length)) }}</span></a>
                             </li>
 
                             <li class="nav-item">
@@ -69,7 +69,7 @@
                             
                                     <li class="nav-item">
 
-                                        <a class="nav-link" id="pills-general-random-tab" data-toggle="tab" href="#pills-general-random" role="tab" aria-controls="pills-general-random" aria-selected="false">Random <span class="badge badge-dark">{{ Object.values(all_general_mission).filter(v => v.DateTimeMode.toUpperCase() == "RANDOM" && compareDate(v.RandomDateTime) == true).length }}</span></a>
+                                        <a class="nav-link" id="pills-general-random-tab" data-toggle="tab" href="#pills-general-random" role="tab" aria-controls="pills-general-random" aria-selected="false">Random <span class="badge badge-dark">{{ Object.values(all_general_mission).filter(v => v.DateTimeMode.toUpperCase() == "RANDOM" && equalDate(v.RandomDateTime) == true).length }}</span></a>
 
                                     </li>
                                         
@@ -155,7 +155,7 @@
 
                                                             <tbody>
 
-                                                                <tr v-for="general_mission in Object.values(all_general_mission).filter(v => v.DateTimeMode.toUpperCase() == 'RANDOM' && compareDate(v.RandomDateTime) == true)">
+                                                                <tr v-for="general_mission in Object.values(all_general_mission).filter(v => v.DateTimeMode.toUpperCase() == 'RANDOM' && equalDate(v.RandomDateTime) == true)">
 
                                                                     <td>
 
@@ -523,8 +523,12 @@
 
                                 this.student_friend = snap.val()['Friend'] || {};
 
-                                let score = snap.val()['Score'] || {};
-                                this.student_point = snap.val()['Score'].Point || null;
+                                let score = snap.val()['Score'] || undefined;
+
+                                if(score != undefined) {
+                                    this.student_point = snap.val()['Score'].Point || null;
+                                }
+                                
                             }
                         });
 
@@ -794,7 +798,7 @@
 
                 let end_date = new_date.setHours(23,59,59,999);
 
-                if(start_date == today && today <= end_date) {
+                if(start_date >= today &&  today <= end_date) {
                     return true;
                 }
                 else {
@@ -812,7 +816,7 @@
                 let end_date_part = end_datetime.split('/');
                 let new_end_date = new Date(`${end_date_part[1]}/${end_date_part[0]}/${end_date_part[2]}`);
 
-                if(new_start_date == today && today <= new_end_date) {
+                if(today >= new_start_date && today <= new_end_date) {
                     return true;
                 }
                 else {

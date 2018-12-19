@@ -329,7 +329,7 @@
                 let start_date = new Date(`${date_part[1]}/${date_part[0]}/${date_part[2]} ${start_time}`);
                 let end_date = new Date(`${date_part[1]}/${date_part[0]}/${date_part[2]} ${end_time}`);
 
-                if(start_date == today && today <= end_date) {
+                if(start_date >= today && today <= end_date) {
                     return true;
                 }
                 else {
