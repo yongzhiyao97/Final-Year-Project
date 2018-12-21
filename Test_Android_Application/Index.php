@@ -33,10 +33,10 @@
                     <label for="tab2" id="tab2">Dribbble</label> -->
 
                     <input id="tab2" type="radio" name="tabs">
-                    <label for="tab2" id="tab2">Stack Overflow</label>
+                    <label for="tab2" id="tab2">Friend</label>
 
                     <input id="tab3" type="radio" name="tabs">
-                    <label for="tab3" id="tab3">Student Information</label>
+                    <label for="tab3" id="tab3">Friend Request</label>
 
                     <input id="tab4" type="radio" name="tabs">
                     <label for="tab4" id="tab4">Student Information</label>
