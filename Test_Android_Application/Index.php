@@ -541,7 +541,7 @@
                                 let mission_id = [];
 
                                 Object.values(this.all_general_mission).forEach(function(a){
-                                    if(a.Completed_Student) {  
+                                    if(a.Completed_Student && a.DateTimeMode == "RANDOM") {  
                                         Object.values(a.Completed_Student).forEach(function(b) {
                                             if(b == vm.facebook_user.uid) {
                                                 mission_id.push(Object.entries(vm.all_general_mission).filter(v => v[1].Mission_ID == a.Mission_ID)[0][0]);

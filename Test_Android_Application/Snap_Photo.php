@@ -255,7 +255,7 @@
                         if(this.checkLocation(this.encoded_location)) {
                             if(mode(this.face_detected) == true) {
                                 let student_facebook_uid = db.ref.child(this.facebook_user.uid);
-                                
+
                                 if(this.event_mission_id != null && this.mission_id != null) {
                                     let student_point = student_facebook_uid.child("Score").child("Point");
 
